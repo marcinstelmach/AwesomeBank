@@ -6,7 +6,6 @@
     <WarningsAsErrors />
     <CodeAnalysisRuleSet>../../../stylecop.ruleset</CodeAnalysisRuleSet>
     <NoWarn>1701;1702;SA1413;CA1062;CA1303;1591</NoWarn>
-    <DocumentationFile>AwesomeBank.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

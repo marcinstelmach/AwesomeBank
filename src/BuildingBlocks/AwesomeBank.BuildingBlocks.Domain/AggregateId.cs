@@ -32,7 +32,7 @@
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((AggregateId) obj);
+            return Equals((AggregateId)obj);
         }
 
         public override int GetHashCode()
