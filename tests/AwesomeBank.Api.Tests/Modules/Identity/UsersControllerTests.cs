@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
-using AwesomeBank.Api.Modules.Identity;
-using FluentAssertions;
-using Microsoft.AspNetCore.Mvc;
-using Xunit;
-
-namespace AwesomeBank.Api.Tests.Modules.Identity
+﻿namespace AwesomeBank.Api.Tests.Modules.Identity
 {
+    using System.Threading.Tasks;
+    using AwesomeBank.Api.Modules.Identity;
+    using FluentAssertions;
+    using Microsoft.AspNetCore.Mvc;
+    using Xunit;
+
     public class UsersControllerTests
     {
         private readonly UsersController _sut;

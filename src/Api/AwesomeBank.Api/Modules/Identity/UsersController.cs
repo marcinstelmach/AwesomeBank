@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-namespace AwesomeBank.Api.Modules.Identity
+﻿namespace AwesomeBank.Api.Modules.Identity
 {
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
