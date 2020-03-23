@@ -29,7 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwesomeBank.Identity.Applic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwesomeBank.Identity.Infrastructure", "src\Modules\Identity\AwesomeBank.Identity.Infrastructure\AwesomeBank.Identity.Infrastructure.csproj", "{321C7FBA-5F8C-4983-A09E-4B44803FC071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeBank.Api.Tests", "tests\AwesomeBank.Api.Tests\AwesomeBank.Api.Tests.csproj", "{64554FBC-8B1C-46BF-A8F0-A6EF55F0362F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwesomeBank.Api.Tests", "tests\AwesomeBank.Api.Tests\AwesomeBank.Api.Tests.csproj", "{64554FBC-8B1C-46BF-A8F0-A6EF55F0362F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", "{4A45D470-8146-4CFC-AE98-1932F4B0DF0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeBank.Migrations", "src\Migrations\AwesomeBank.Migrations\AwesomeBank.Migrations.csproj", "{DF93A609-C33B-44A5-8114-49E5411ABA17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,10 @@ Global
 		{64554FBC-8B1C-46BF-A8F0-A6EF55F0362F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64554FBC-8B1C-46BF-A8F0-A6EF55F0362F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64554FBC-8B1C-46BF-A8F0-A6EF55F0362F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF93A609-C33B-44A5-8114-49E5411ABA17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF93A609-C33B-44A5-8114-49E5411ABA17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF93A609-C33B-44A5-8114-49E5411ABA17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF93A609-C33B-44A5-8114-49E5411ABA17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +94,8 @@ Global
 		{D67E1E20-D82A-4B29-BD57-96D28972DC02} = {12119C93-3D22-4F74-AAE4-5D33A29A6682}
 		{321C7FBA-5F8C-4983-A09E-4B44803FC071} = {12119C93-3D22-4F74-AAE4-5D33A29A6682}
 		{64554FBC-8B1C-46BF-A8F0-A6EF55F0362F} = {92582386-8980-47E3-A334-1DEE7147D791}
+		{4A45D470-8146-4CFC-AE98-1932F4B0DF0C} = {A09EAC30-0007-45AF-9F10-6FE526CCFA19}
+		{DF93A609-C33B-44A5-8114-49E5411ABA17} = {4A45D470-8146-4CFC-AE98-1932F4B0DF0C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE10A5EC-9C49-482A-B990-38783921B646}
