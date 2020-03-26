@@ -9,7 +9,7 @@
     {
         private readonly List<ApplicationUserGroup> _applicationUserGroups;
 
-        public User(string firstName, string lastName, string email, Password password)
+        public User(string firstName, string lastName, string email, Password password, Role role)
             : this()
         {
             Id = new AggregateId();
@@ -20,6 +20,7 @@
             Password = password;
             CreationDateTime = DateTimeOffset.UtcNow;
             IsDeleted = false;
+            Role = role;
         }
 
         private User()
@@ -41,16 +42,12 @@
 
         public bool IsDeleted { get; private set; }
 
+        public virtual Role Role { get; private set; }
+
         public IReadOnlyCollection<Claim> Claims => _applicationUserGroups
             .SelectMany(x => x.ApplicationGroups)
             .SelectMany(x => x.ApplicationGroupClaims)
             .Select(x => x.Claim)
-            .ToList();
-
-        public IReadOnlyCollection<Role> Roles => _applicationUserGroups
-            .SelectMany(x => x.ApplicationGroups)
-            .SelectMany(x => x.ApplicationGroupRoles)
-            .Select(x => x.Role)
             .ToList();
     }
 }

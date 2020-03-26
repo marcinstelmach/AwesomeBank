@@ -10,6 +10,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Scripts\Up\202003\0008_Insert_Into_Identity_Roles.sql" />
+    <None Remove="Scripts\Up\202003\0009_Insert_Into_Identity_Application_Groups.sql" />
+    <None Remove="Scripts\Up\202003\0010_Insert_Into_Identity_Claims.sql" />
+    <None Remove="Scripts\Up\202003\0011_Insert_Into_Identity_Application_Group_Claims.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DbUp" Version="4.3.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.0" />
   </ItemGroup>
