@@ -5,7 +5,7 @@
     using AwesomeBank.BuildingBlocks.Application;
     using MediatR;
 
-    public class CreateUserHandler : ICommandHandler<CreateUser>
+    internal class CreateUserHandler : ICommandHandler<CreateUser>
     {
         public async Task<Unit> Handle(CreateUser request, CancellationToken cancellationToken)
         {
