@@ -1,7 +1,7 @@
 ﻿namespace AwesomeBank.Api.Extensions
 {
     using AutoMapper;
-    using AwesomeBank.Api.Mappings.Identity;
+    using AwesomeBank.Api.Mappings;
     using AwesomeBank.Identity.Application;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
@@ -13,11 +13,7 @@
 
         public static IServiceCollection AddAutoMapper(this IServiceCollection services)
         {
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile(new UserViewModelProfile());
-            });
-
+            var configuration = AutoMapperConfiguration.Configure();
             services.AddTransient<IMapper>(_ => configuration.CreateMapper());
             return services;
         }
