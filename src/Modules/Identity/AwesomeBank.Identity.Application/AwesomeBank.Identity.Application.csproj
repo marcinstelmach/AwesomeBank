@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\AwesomeBank.BuildingBlocks.Application\AwesomeBank.BuildingBlocks.Application.csproj" />
     <ProjectReference Include="..\AwesomeBank.Identity.Domain\AwesomeBank.Identity.Domain.csproj" />
   </ItemGroup>
 

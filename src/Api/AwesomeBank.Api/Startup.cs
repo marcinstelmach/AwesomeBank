@@ -1,5 +1,7 @@
 ﻿namespace AwesomeBank.Api
 {
+    using AwesomeBank.Api.Extensions;
+    using AwesomeBank.BuildingBlocks.Infrastructure.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -17,6 +19,9 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper();
+            services.AddMediator();
+            services.AddBuildingBlocksServices();
             services.AddControllers();
         }
 

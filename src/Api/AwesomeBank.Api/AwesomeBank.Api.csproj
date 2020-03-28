@@ -9,10 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Identity\AwesomeBank.Identity.Application\AwesomeBank.Identity.Application.csproj" />
+    <ProjectReference Include="..\..\Modules\Identity\AwesomeBank.Identity.Infrastructure\AwesomeBank.Identity.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

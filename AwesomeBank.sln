@@ -33,7 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwesomeBank.Api.Tests", "te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", "{4A45D470-8146-4CFC-AE98-1932F4B0DF0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeBank.Migrations", "src\Migrations\AwesomeBank.Migrations\AwesomeBank.Migrations.csproj", "{DF93A609-C33B-44A5-8114-49E5411ABA17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwesomeBank.Migrations", "src\Migrations\AwesomeBank.Migrations\AwesomeBank.Migrations.csproj", "{DF93A609-C33B-44A5-8114-49E5411ABA17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{38595FB8-529F-4D3D-BBCF-6EC9531BE1AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeBank.BuildingBlocks.Infrastructure.Tests", "tests\BuildingBlocks\AwesomeBank.BuildingBlocks.Infrastructure.Tests\AwesomeBank.BuildingBlocks.Infrastructure.Tests.csproj", "{BDFB4882-1EC4-477E-B16B-A2D3A75CA8ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +81,10 @@ Global
 		{DF93A609-C33B-44A5-8114-49E5411ABA17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF93A609-C33B-44A5-8114-49E5411ABA17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF93A609-C33B-44A5-8114-49E5411ABA17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDFB4882-1EC4-477E-B16B-A2D3A75CA8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDFB4882-1EC4-477E-B16B-A2D3A75CA8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDFB4882-1EC4-477E-B16B-A2D3A75CA8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDFB4882-1EC4-477E-B16B-A2D3A75CA8ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +104,8 @@ Global
 		{64554FBC-8B1C-46BF-A8F0-A6EF55F0362F} = {92582386-8980-47E3-A334-1DEE7147D791}
 		{4A45D470-8146-4CFC-AE98-1932F4B0DF0C} = {A09EAC30-0007-45AF-9F10-6FE526CCFA19}
 		{DF93A609-C33B-44A5-8114-49E5411ABA17} = {4A45D470-8146-4CFC-AE98-1932F4B0DF0C}
+		{38595FB8-529F-4D3D-BBCF-6EC9531BE1AA} = {92582386-8980-47E3-A334-1DEE7147D791}
+		{BDFB4882-1EC4-477E-B16B-A2D3A75CA8ED} = {38595FB8-529F-4D3D-BBCF-6EC9531BE1AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE10A5EC-9C49-482A-B990-38783921B646}
