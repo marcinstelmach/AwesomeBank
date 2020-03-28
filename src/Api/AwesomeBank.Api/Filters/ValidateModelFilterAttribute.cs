@@ -10,6 +10,7 @@
     public class ValidateModelFilterAttribute : ActionFilterAttribute
     {
         private const string Message = "Model is invalid";
+        private const string Code = "model_is_invalid";
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
@@ -18,6 +19,7 @@
                 var errorResponseViewModel = new ErrorResponseViewModel
                 {
                     Message = Message,
+                    Code = Code,
                     Errors = context.ModelState.Keys.SelectMany(
                         key => context.ModelState[key].Errors.Select(
                             x => new ErrorViewModel
