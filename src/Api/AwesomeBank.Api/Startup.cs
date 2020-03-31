@@ -2,6 +2,7 @@
 {
     using AwesomeBank.Api.Extensions;
     using AwesomeBank.BuildingBlocks.Infrastructure.Extensions;
+    using AwesomeBank.Identity.Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -19,9 +20,11 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddConfiguration(Configuration);
             services.AddAutoMapper();
             services.AddMediator();
             services.AddBuildingBlocksServices();
+            services.AddIdentityModule();
             services.AddControllers();
         }
 
