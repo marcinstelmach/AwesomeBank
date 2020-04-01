@@ -36,7 +36,7 @@
 
         public bool EmailConfirmed { get; private set; }
 
-        public Password Password { get; private set; }
+        public virtual Password Password { get; private set; }
 
         public DateTimeOffset CreationDateTime { get; private set; }
 
@@ -44,7 +44,7 @@
 
         public virtual Role Role { get; private set; }
 
-        public IReadOnlyCollection<Claim> Claims => _applicationUserGroups
+        public virtual IReadOnlyCollection<Claim> Claims => _applicationUserGroups
             .SelectMany(x => x.ApplicationGroups)
             .SelectMany(x => x.ApplicationGroupClaims)
             .Select(x => x.Claim)

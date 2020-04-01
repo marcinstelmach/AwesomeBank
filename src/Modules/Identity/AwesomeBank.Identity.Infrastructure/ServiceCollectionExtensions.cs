@@ -1,6 +1,7 @@
 ﻿namespace AwesomeBank.Identity.Infrastructure
 {
     using AwesomeBank.BuildingBlocks.Infrastructure.Settings;
+    using AwesomeBank.Identity.Domain;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Options;
@@ -15,6 +16,8 @@
                 AddDbContext<IdentityContext>(options => options
                     .UseLazyLoadingProxies()
                     .UseSqlServer(databaseSettings.AwesomeBankConnectionString));
+
+            services.AddScoped<IUsersRepository, UsersRepository>();
 
             return services;
         }
