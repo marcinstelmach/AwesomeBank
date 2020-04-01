@@ -17,14 +17,21 @@
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable(UserTableName, _schemaName);
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.Id).HasName("PK_Identity_Users_Id");
+
+            builder.Property(x => x.Id).HasConversion(x => x.Value, x => new UserId(x));
 
             builder.OwnsOne(x => x.Password)
                 .Property(x => x.PasswordHash).HasColumnName("PasswordHash");
             builder.OwnsOne(x => x.Password)
                 .Property(x => x.SecurityStamp).HasColumnName("SecurityStamp");
 
-            builder.Ignore(x => x.State);
+            builder.Property<int>("RoleId");
+            builder.HasOne(x => x.Role)
+                .WithMany()
+                .HasForeignKey("RoleId");
+
+            builder.Ignore(x => x.Version);
         }
     }
 }

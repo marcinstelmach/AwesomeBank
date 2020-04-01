@@ -11,7 +11,7 @@
             SecurityStamp = securityStamp;
         }
 
-        private Password()
+        protected Password()
         {
         }
 

@@ -19,6 +19,7 @@
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserEntityTypeConfiguration(IdentitySchemaName));
+            modelBuilder.ApplyConfiguration(new RoleEntityTypeConfiguration(IdentitySchemaName));
         }
     }
 }

@@ -7,6 +7,8 @@
 	[RoleId] [int] NOT NULL,
 	[PasswordHash] [nvarchar](1024) NULL,
 	[SecurityStamp] [nvarchar](36) NULL,
+	[IsDeleted] [bit] NOT NULL DEFAULT 0,
+	[CreationDateTime] [datetimeoffset](7) NOT NULL,
 	CONSTRAINT [PK_Identity_Users_Id] PRIMARY KEY CLUSTERED ([Id]),
 	CONSTRAINT [FK_Identity_Roles_Id] FOREIGN KEY ([RoleId]) REFERENCES [Identity].[Roles] ([Id])
 );
