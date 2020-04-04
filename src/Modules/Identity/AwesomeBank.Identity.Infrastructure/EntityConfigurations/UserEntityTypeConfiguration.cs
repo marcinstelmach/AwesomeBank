@@ -17,7 +17,7 @@
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable(UserTableName, _schemaName);
-            builder.HasKey(x => x.Id).HasName("PK_Identity_Users_Id");
+            builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id).HasConversion(x => x.Value, x => new UserId(x));
 
@@ -30,6 +30,10 @@
             builder.HasOne(x => x.Role)
                 .WithMany()
                 .HasForeignKey("RoleId");
+
+            builder.HasMany(x => x.ApplicationUserGroups)
+                .WithOne()
+                .HasForeignKey("UserId");
 
             builder.Ignore(x => x.Version);
         }

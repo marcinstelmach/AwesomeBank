@@ -4,9 +4,9 @@
 
     public class ApplicationUserGroup
     {
-        public int UserId { get; private set; }
+        public UserId UserId { get; private set; }
 
-        public int ApplicationUserGroupId { get; private set; }
+        public int ApplicationGroupId { get; private set; }
 
         public virtual ICollection<ApplicationGroup> ApplicationGroups { get; private set; }
     }

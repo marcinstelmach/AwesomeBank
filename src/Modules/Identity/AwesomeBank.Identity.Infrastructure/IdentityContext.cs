@@ -20,6 +20,10 @@
         {
             modelBuilder.ApplyConfiguration(new UserEntityTypeConfiguration(IdentitySchemaName));
             modelBuilder.ApplyConfiguration(new RoleEntityTypeConfiguration(IdentitySchemaName));
+            modelBuilder.ApplyConfiguration(new ApplicationUserGroupEntityTypeConfiguration(IdentitySchemaName));
+            modelBuilder.ApplyConfiguration(new ApplicationGroupEntityTypeConfiguration(IdentitySchemaName));
+            modelBuilder.ApplyConfiguration(new ApplicationGroupClaimEntityTypeConfiguration(IdentitySchemaName));
+            modelBuilder.ApplyConfiguration(new ClaimsEntityTypeConfiguration(IdentitySchemaName));
         }
     }
 }

@@ -2,28 +2,27 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using AwesomeBank.BuildingBlocks.Domain;
 
     public class User : Entity, IAggregateRoot
     {
         private readonly List<ApplicationUserGroup> _applicationUserGroups;
 
-        ////public User(string firstName, string lastName, string email, Password password, Role role)
-        ////    ////: this()
-        ////{
-        ////    Id = new UserId(Guid.NewGuid());
-        ////    FirstName = firstName;
-        ////    LastName = lastName;
-        ////    Email = email;
-        ////    EmailConfirmed = false;
-        ////    Password = password;
-        ////    CreationDateTime = DateTimeOffset.UtcNow;
-        ////    IsDeleted = false;
-        ////    ////Role = role;
-        ////}
+        public User(string firstName, string lastName, string email, Password password, Role role)
+            : this()
+        {
+            Id = new UserId(Guid.NewGuid());
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            EmailConfirmed = false;
+            Password = password;
+            CreationDateTime = DateTimeOffset.UtcNow;
+            IsDeleted = false;
+            Role = role;
+        }
 
-        public User()
+        protected User()
         {
             _applicationUserGroups = new List<ApplicationUserGroup>();
         }
@@ -45,6 +44,8 @@
         public bool IsDeleted { get; private set; }
 
         public virtual Role Role { get; private set; }
+
+        public virtual IReadOnlyCollection<ApplicationUserGroup> ApplicationUserGroups => _applicationUserGroups;
 
         ////public virtual IReadOnlyCollection<Claim> Claims => _applicationUserGroups
         ////    .SelectMany(x => x.ApplicationGroups)
