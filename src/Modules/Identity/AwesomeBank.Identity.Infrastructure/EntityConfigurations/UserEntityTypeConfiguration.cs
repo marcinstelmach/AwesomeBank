@@ -36,6 +36,7 @@
                 .HasForeignKey("UserId");
 
             builder.Ignore(x => x.Version);
+            builder.Ignore(x => x.Claims);
         }
     }
 }

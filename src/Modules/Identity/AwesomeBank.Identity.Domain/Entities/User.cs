@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using AwesomeBank.BuildingBlocks.Domain;
 
     public class User : Entity, IAggregateRoot
@@ -47,10 +48,10 @@
 
         public virtual IReadOnlyCollection<ApplicationUserGroup> ApplicationUserGroups => _applicationUserGroups;
 
-        ////public virtual IReadOnlyCollection<Claim> Claims => _applicationUserGroups
-        ////    .SelectMany(x => x.ApplicationGroups)
-        ////    .SelectMany(x => x.ApplicationGroupClaims)
-        ////    .Select(x => x.Claim)
-        ////    .ToList();
+        public virtual IReadOnlyCollection<Claim> Claims => _applicationUserGroups
+            .Select(x => x.ApplicationGroup)
+            .SelectMany(x => x.ApplicationGroupClaims)
+            .Select(x => x.Claim)
+            .ToList();
     }
 }

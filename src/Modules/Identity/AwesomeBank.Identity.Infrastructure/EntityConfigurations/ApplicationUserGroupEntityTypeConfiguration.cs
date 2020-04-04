@@ -18,8 +18,8 @@
         {
             builder.ToTable(ApplicationUserGroupsTableName, _schemaName);
 
-            builder.HasKey(x => new { x.UserId, ApplicationUserGroupId = x.ApplicationGroupId });
-            builder.HasMany(x => x.ApplicationGroups)
+            builder.HasKey(x => new { x.UserId, x.ApplicationGroupId });
+            builder.HasOne(x => x.ApplicationGroup)
                 .WithOne();
         }
     }
