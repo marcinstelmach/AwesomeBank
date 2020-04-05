@@ -26,6 +26,11 @@
             builder.OwnsOne(x => x.Password)
                 .Property(x => x.SecurityStamp).HasColumnName("SecurityStamp");
 
+            builder.OwnsOne(x => x.IdentityDocument)
+                .Property(x => x.Type).HasColumnName("DocumentType");
+            builder.OwnsOne(x => x.IdentityDocument)
+                .Property(x => x.Value).HasColumnName("DocumentValue");
+
             builder.Property<int>("RoleId");
             builder.HasOne(x => x.Role)
                 .WithMany()

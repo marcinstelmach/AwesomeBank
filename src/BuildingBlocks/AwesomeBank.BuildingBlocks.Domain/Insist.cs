@@ -11,5 +11,13 @@
                 throw new ArgumentNullException(parameterName);
             }
         }
+
+        public static void IsNotNullOrWhiteSpace(string item, string parameterName)
+        {
+            if (string.IsNullOrWhiteSpace(item))
+            {
+                throw new ArgumentException($"Parameter {parameterName} is null or whitespace.");
+            }
+        }
     }
 }

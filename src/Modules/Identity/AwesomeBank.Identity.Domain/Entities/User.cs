@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using AwesomeBank.BuildingBlocks.Domain;
+    using AwesomeBank.Identity.Domain.ValueObjects;
 
     public class User : Entity, IAggregateRoot
     {
@@ -36,6 +37,10 @@
         public string Email { get; private set; }
 
         public bool EmailConfirmed { get; private set; }
+
+        public DateTime BirthDayDate { get; private set; }
+
+        public virtual IdentityDocument IdentityDocument { get; private set; }
 
         public virtual Password Password { get; private set; }
 

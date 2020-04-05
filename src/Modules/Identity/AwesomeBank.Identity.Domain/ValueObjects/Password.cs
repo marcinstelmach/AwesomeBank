@@ -1,4 +1,4 @@
-﻿namespace AwesomeBank.Identity.Domain.Entities
+﻿namespace AwesomeBank.Identity.Domain.ValueObjects
 {
     using System.Collections.Generic;
     using AwesomeBank.BuildingBlocks.Domain;
@@ -7,6 +7,9 @@
     {
         public Password(string passwordHash, string securityStamp)
         {
+            Insist.IsNotNullOrWhiteSpace(passwordHash, nameof(passwordHash));
+            Insist.IsNotNullOrWhiteSpace(securityStamp, nameof(securityStamp));
+
             PasswordHash = passwordHash;
             SecurityStamp = securityStamp;
         }
