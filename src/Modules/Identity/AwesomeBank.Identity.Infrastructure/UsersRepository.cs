@@ -19,7 +19,6 @@
         public async Task<IEnumerable<User>> GetAsync()
         {
             var users = await _identityContext.Users.ToArrayAsync();
-            var userClaims = users.First().Claims;
             return users;
         }
     }

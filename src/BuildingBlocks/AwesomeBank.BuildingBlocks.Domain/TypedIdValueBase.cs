@@ -1,20 +1,16 @@
 ﻿namespace AwesomeBank.BuildingBlocks.Domain
 {
     using System;
+    using System.Collections.Generic;
 
     public abstract class TypedIdValueBase<T> : IEquatable<TypedIdValueBase<T>>
     {
-        protected TypedIdValueBase(Guid value)
+        protected TypedIdValueBase(T value)
         {
-            if (value == Guid.Empty)
-            {
-                throw new InvalidOperationException("Id value cannot be empty!");
-            }
-
             Value = value;
         }
 
-        public Guid Value { get; }
+        public T Value { get; }
 
         public static bool operator ==(TypedIdValueBase<T> obj1, TypedIdValueBase<T> obj2)
         {
@@ -43,17 +39,37 @@
                 return false;
             }
 
-            return obj is TypedIdValueBase<T> other && Equals(other);
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+
+            return Equals((TypedIdValueBase<T>)obj);
         }
 
         public override int GetHashCode()
         {
-            return Value.GetHashCode();
+            return EqualityComparer<T>.Default.GetHashCode(Value);
         }
 
         public bool Equals(TypedIdValueBase<T> other)
         {
-            return this.Value == other?.Value;
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return EqualityComparer<T>.Default.Equals(Value, other.Value);
         }
     }
 }
