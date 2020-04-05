@@ -1,5 +1,7 @@
 ﻿namespace AwesomeBank.Api
 {
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
     using AwesomeBank.Api.Extensions;
     using AwesomeBank.BuildingBlocks.Infrastructure.Extensions;
     using AwesomeBank.Identity.Infrastructure;
@@ -25,7 +27,11 @@
             services.AddMediator();
             services.AddBuildingBlocksServices();
             services.AddIdentityModule();
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

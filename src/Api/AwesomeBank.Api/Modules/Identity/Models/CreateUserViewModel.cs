@@ -1,5 +1,6 @@
 ﻿namespace AwesomeBank.Api.Modules.Identity.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class CreateUserViewModel
@@ -21,5 +22,16 @@
         [Required]
         [Compare(nameof(Password))]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public DateTime? BirthdayDate { get; set; }
+
+        [Required]
+        [EnumDataType(typeof(IdentityDocumentTypeViewModel))]
+        public IdentityDocumentTypeViewModel DocumentType { get; set; }
+
+        [Required]
+        [MaxLength(256)]
+        public string DocumentValue { get; set; }
     }
 }
