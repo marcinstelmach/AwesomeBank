@@ -25,7 +25,7 @@
         {
             var command = _mapper.Map<CreateUserViewModel, CreateUser>(viewModel);
             await _bus.ExecuteCommandAsync(command);
-            return Ok("Hello world");
+            return Accepted();
         }
     }
 }

@@ -3,13 +3,14 @@
     using System;
     using System.Collections.Generic;
     using AwesomeBank.BuildingBlocks.Domain;
+    using AwesomeBank.Identity.Domain.Exceptions;
     using AwesomeBank.Identity.Domain.ValueObjects;
 
     public class User : Entity, IAggregateRoot
     {
         private readonly List<ApplicationUserGroup> _applicationUserGroups;
 
-        public User(string firstName, string lastName, string email, Password password, Role role)
+        public User(string firstName, string lastName, string email, Password password, DateTime birthDayDate, IdentityDocument identityDocument)
             : this()
         {
             Id = new UserId(Guid.NewGuid());
@@ -18,9 +19,10 @@
             Email = email;
             EmailConfirmed = false;
             Password = password;
+            SetBirthDayDate(birthDayDate);
+            IdentityDocument = identityDocument;
             CreationDateTime = DateTimeOffset.UtcNow;
             IsDeleted = false;
-            Role = role;
         }
 
         protected User()
@@ -51,5 +53,15 @@
         public virtual Role Role { get; private set; }
 
         public virtual IReadOnlyCollection<ApplicationUserGroup> ApplicationUserGroups => _applicationUserGroups;
+
+        public void SetBirthDayDate(DateTime birthDayDate)
+        {
+            if (DateTime.UtcNow.Date.AddYears(-18) > birthDayDate)
+            {
+                throw new UserTooYoungException(Id, 18);
+            }
+
+            BirthDayDate = birthDayDate;
+        }
     }
 }
