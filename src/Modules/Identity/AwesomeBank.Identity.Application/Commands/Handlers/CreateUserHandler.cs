@@ -12,7 +12,7 @@
     using AwesomeBank.Identity.Domain.ValueObjects;
     using MediatR;
 
-    internal class CreateUserHandler : ICommandHandler<CreateUser>
+    internal class CreateUserHandler : ICommandHandler<CreateUserCommand>
     {
         private const string ClientRoleName = "Client";
 
@@ -29,7 +29,7 @@
             _mapper = mapper;
         }
 
-        public async Task<Unit> Handle(CreateUser request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             Insist.IsNotNull(request, nameof(request));
 

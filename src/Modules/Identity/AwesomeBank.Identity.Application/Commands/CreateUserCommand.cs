@@ -4,7 +4,7 @@
     using AwesomeBank.BuildingBlocks.Application;
     using AwesomeBank.Identity.Application.Dtos;
 
-    public class CreateUser : ICommand
+    public class CreateUserCommand : ICommand
     {
         public string FirstName { get; set; }
 

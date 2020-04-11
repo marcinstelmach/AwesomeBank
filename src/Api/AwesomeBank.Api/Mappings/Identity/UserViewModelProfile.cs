@@ -8,7 +8,7 @@
     {
         public UserViewModelProfile()
         {
-            CreateMap<CreateUserViewModel, CreateUser>();
+            CreateMap<CreateUserViewModel, CreateUserCommand>();
         }
     }
 }

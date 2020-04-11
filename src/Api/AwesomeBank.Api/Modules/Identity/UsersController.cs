@@ -23,7 +23,7 @@
         [ValidateModelFilter]
         public async Task<IActionResult> CreateUserAsync([FromBody] CreateUserViewModel viewModel)
         {
-            var command = _mapper.Map<CreateUserViewModel, CreateUser>(viewModel);
+            var command = _mapper.Map<CreateUserViewModel, CreateUserCommand>(viewModel);
             await _bus.ExecuteCommandAsync(command);
             return Accepted();
         }

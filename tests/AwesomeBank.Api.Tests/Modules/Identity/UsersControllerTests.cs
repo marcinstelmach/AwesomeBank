@@ -32,22 +32,22 @@
             await _sut.CreateUserAsync(model);
 
             // Assert
-            _mapperMock.Verify(x => x.Map<CreateUserViewModel, CreateUser>(model), Times.Once);
+            _mapperMock.Verify(x => x.Map<CreateUserViewModel, CreateUserCommand>(model), Times.Once);
         }
 
         [Theory]
         [AutoData]
-        public async Task When_Creating_User_Then_Executes_Command_On_Bus(CreateUserViewModel model, CreateUser createUser)
+        public async Task When_Creating_User_Then_Executes_Command_On_Bus(CreateUserViewModel model, CreateUserCommand createUserCommand)
         {
             // Arrange
-            _mapperMock.Setup(x => x.Map<CreateUserViewModel, CreateUser>(It.IsAny<CreateUserViewModel>()))
-                .Returns(createUser);
+            _mapperMock.Setup(x => x.Map<CreateUserViewModel, CreateUserCommand>(It.IsAny<CreateUserViewModel>()))
+                .Returns(createUserCommand);
 
             // Act
             await _sut.CreateUserAsync(model);
 
             // Assert
-            _busMock.Verify(x => x.ExecuteCommandAsync(createUser), Times.Once);
+            _busMock.Verify(x => x.ExecuteCommandAsync(createUserCommand), Times.Once);
         }
 
         [Theory]

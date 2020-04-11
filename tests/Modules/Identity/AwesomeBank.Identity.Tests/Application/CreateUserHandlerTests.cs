@@ -71,7 +71,7 @@
 
         [Theory]
         [AutoData]
-        public async Task When_Handling_Command_And_User_With_Given_Email_Already_Exists_Then_Throws_Exception(CreateUser request)
+        public async Task When_Handling_Command_And_User_With_Given_Email_Already_Exists_Then_Throws_Exception(CreateUserCommand request)
         {
             // Arrange
             _usersRepositoryMock.Setup(x => x.ExistsUserAsync(It.IsAny<string>())).ReturnsAsync(true);
@@ -178,10 +178,10 @@
             result.Should().Be(Unit.Value);
         }
 
-        private CreateUser CreateRequest()
+        private CreateUserCommand CreateRequest()
         {
             return _fixture
-                .Build<CreateUser>()
+                .Build<CreateUserCommand>()
                 .With(x => x.BirthdayDate, DateTime.UtcNow.Date.AddYears(-18))
                 .Create();
         }
