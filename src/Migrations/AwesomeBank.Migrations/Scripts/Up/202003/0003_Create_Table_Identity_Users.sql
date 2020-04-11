@@ -6,7 +6,7 @@
 	[LastName] [nvarchar](70) NOT NULL,
 	[RoleId] [int] NOT NULL,
 	[PasswordHash] [nvarchar](1024) NOT NULL,
-	[SecurityStamp] [nvarchar](36) NOT NULL,
+	[SecurityStamp] [nvarchar](1024) NOT NULL,
 	[IsDeleted] [bit] NOT NULL DEFAULT 0,
 	[CreationDateTime] [datetimeoffset](7) NOT NULL,
 	[BirthDayDate] [smalldatetime] NULL,

@@ -5,6 +5,7 @@
     using AwesomeBank.BuildingBlocks.Infrastructure;
     using AwesomeBank.Identity.Domain;
     using AwesomeBank.Identity.Domain.Entities;
+    using AwesomeBank.Identity.Domain.Interfaces;
     using Microsoft.EntityFrameworkCore;
 
     public class UsersRepository : Repository, IUsersRepository
@@ -25,7 +26,7 @@
 
         public void AddUser(User user)
         {
-            throw new System.NotImplementedException();
+            _identityContext.Users.Add(user);
         }
     }
 }

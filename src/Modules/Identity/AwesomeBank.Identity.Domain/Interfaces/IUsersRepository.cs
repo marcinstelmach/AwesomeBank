@@ -1,4 +1,4 @@
-﻿namespace AwesomeBank.Identity.Domain
+﻿namespace AwesomeBank.Identity.Domain.Interfaces
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

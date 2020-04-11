@@ -10,7 +10,7 @@
     {
         private readonly List<ApplicationUserGroup> _applicationUserGroups;
 
-        public User(string firstName, string lastName, string email, Password password, DateTime birthDayDate, IdentityDocument identityDocument)
+        public User(string firstName, string lastName, string email, Password password, DateTime birthDayDate, IdentityDocument identityDocument, Role role)
             : this()
         {
             Id = new UserId(Guid.NewGuid());
@@ -23,6 +23,7 @@
             IdentityDocument = identityDocument;
             CreationDateTime = DateTimeOffset.UtcNow;
             IsDeleted = false;
+            SetRole(role);
         }
 
         protected User()
@@ -56,12 +57,17 @@
 
         public void SetBirthDayDate(DateTime birthDayDate)
         {
-            if (DateTime.UtcNow.Date.AddYears(-18) > birthDayDate)
+            if (birthDayDate.AddYears(18) > DateTime.UtcNow)
             {
                 throw new UserTooYoungException(Id, 18);
             }
 
             BirthDayDate = birthDayDate;
+        }
+
+        public void SetRole(Role role)
+        {
+            Role = role;
         }
     }
 }

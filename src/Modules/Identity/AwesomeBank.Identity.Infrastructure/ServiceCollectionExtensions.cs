@@ -2,6 +2,9 @@
 {
     using AwesomeBank.BuildingBlocks.Infrastructure.Settings;
     using AwesomeBank.Identity.Domain;
+    using AwesomeBank.Identity.Domain.Interfaces;
+    using AwesomeBank.Identity.Domain.Services;
+    using AwesomeBank.Identity.Infrastructure.Services;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Options;
@@ -18,6 +21,9 @@
                     .UseSqlServer(databaseSettings.AwesomeBankConnectionString));
 
             services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IRolesRepository, RolesRepository>();
+            services.AddTransient<IPasswordEncrypter, PasswordEncrypter>();
+            services.AddTransient<IPasswordFactory, PasswordFactory>();
 
             return services;
         }
