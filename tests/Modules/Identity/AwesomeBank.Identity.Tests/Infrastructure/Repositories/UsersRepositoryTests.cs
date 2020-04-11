@@ -2,12 +2,8 @@
 {
     using System;
     using System.Threading.Tasks;
-    using AutoFixture;
     using AutoFixture.Xunit2;
-    using AwesomeBank.Identity.Domain.Entities;
-    using AwesomeBank.Identity.Domain.ValueObjects;
     using AwesomeBank.Identity.Infrastructure;
-    using AwesomeBank.Tests.Common;
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
     using Xunit;
@@ -34,7 +30,7 @@
         {
             // Arrange
             // Lowercase is done on ef config layer, but this feature does not work on InMemory provider
-            var user = CreateUser(email.ToLowerInvariant());
+            var user = IdentityTestsHelper.CreateUser(email.ToLowerInvariant());
             _sut.AddUser(user);
             await _context.SaveChangesAsync();
 
@@ -60,7 +56,7 @@
         public async Task When_Adding_User_Then_Adds_User_To_Database()
         {
             // Arrange
-            var user = CreateUser();
+            var user = IdentityTestsHelper.CreateUser();
 
             // Act
             _sut.AddUser(user);
@@ -70,23 +66,6 @@
             var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.Id == user.Id);
             existingUser.Should().NotBeNull();
             existingUser.Should().BeEquivalentTo(user);
-        }
-
-        private static User CreateUser(string email = null)
-        {
-            var fixture = new Fixture();
-            var role = (Role)Activator.CreateInstance(typeof(Role), true);
-            role.SetPropertyValue(nameof(Role.Id), fixture.Create<int>());
-            role.SetPropertyValue(nameof(Role.Name), fixture.Create<string>());
-
-            return new User(
-                fixture.Create<string>(),
-                fixture.Create<string>(),
-                email ?? fixture.Create<string>(),
-                fixture.Create<Password>(),
-                DateTime.UtcNow.AddYears(-18),
-                fixture.Create<IdentityDocument>(),
-                role);
         }
     }
 }

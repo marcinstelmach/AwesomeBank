@@ -14,7 +14,6 @@
     using AwesomeBank.Identity.Domain.Enums;
     using AwesomeBank.Identity.Domain.Interfaces;
     using AwesomeBank.Identity.Domain.ValueObjects;
-    using AwesomeBank.Tests.Common;
     using FluentAssertions;
     using MediatR;
     using Moq;
@@ -128,7 +127,7 @@
         {
             // Arrange
             var request = CreateRequest();
-            var role = CreateRole();
+            var role = IdentityTestsHelper.CreateRole();
             _passwordFactoryMock.Setup(x => x.Create(It.IsAny<string>())).Returns(password);
             _mapperMock.Setup(x => x.Map<IdentityDocumentTypeDto, IdentityDocumentType>(It.IsAny<IdentityDocumentTypeDto>()))
                 .Returns(documentType);
@@ -184,14 +183,6 @@
                 .Build<CreateUserCommand>()
                 .With(x => x.BirthdayDate, DateTime.UtcNow.Date.AddYears(-18))
                 .Create();
-        }
-
-        private Role CreateRole()
-        {
-            var role = (Role)Activator.CreateInstance(typeof(Role), true);
-            role.SetPropertyValue(nameof(Role.Id), _fixture.Create<int>());
-            role.SetPropertyValue(nameof(Role.Name), _fixture.Create<string>());
-            return role;
         }
     }
 }
