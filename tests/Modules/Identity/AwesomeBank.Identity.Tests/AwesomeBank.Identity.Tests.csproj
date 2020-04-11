@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\src\Modules\Identity\AwesomeBank.Identity.Infrastructure\AwesomeBank.Identity.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\AwesomeBank.Tests.Common\AwesomeBank.Tests.Common.csproj" />
   </ItemGroup>
 
 </Project>
