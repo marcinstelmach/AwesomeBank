@@ -21,6 +21,8 @@
 
             builder.Property(x => x.Id).HasConversion(x => x.Value, x => new UserId(x));
 
+            builder.Property(x => x.Email).HasConversion(x => x.ToLowerInvariant(), x => x);
+
             builder.OwnsOne(x => x.Password)
                 .Property(x => x.PasswordHash).HasColumnName("PasswordHash");
             builder.OwnsOne(x => x.Password)

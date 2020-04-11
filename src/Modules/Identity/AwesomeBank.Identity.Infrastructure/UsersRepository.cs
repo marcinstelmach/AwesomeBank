@@ -1,9 +1,7 @@
 ﻿namespace AwesomeBank.Identity.Infrastructure
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
     using AwesomeBank.BuildingBlocks.Infrastructure;
-    using AwesomeBank.Identity.Domain;
     using AwesomeBank.Identity.Domain.Entities;
     using AwesomeBank.Identity.Domain.Interfaces;
     using Microsoft.EntityFrameworkCore;
@@ -18,10 +16,10 @@
             _identityContext = identityContext;
         }
 
-        public async Task<IEnumerable<User>> GetAsync()
+        public async Task<bool> ExistsUserAsync(string email)
         {
-            var users = await _identityContext.Users.ToArrayAsync();
-            return users;
+            return await _identityContext.Users
+                .AnyAsync(x => x.Email == email.ToLowerInvariant());
         }
 
         public void AddUser(User user)

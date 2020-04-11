@@ -5,6 +5,6 @@
 
     public interface IRolesRepository
     {
-        Task<Role> GetRoleAndEnsureExistsAsync(string name);
+        Task<Role> GetRoleAsync(string name);
     }
 }

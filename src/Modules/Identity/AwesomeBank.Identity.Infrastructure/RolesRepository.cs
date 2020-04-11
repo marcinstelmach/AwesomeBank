@@ -3,7 +3,6 @@
     using System.Threading.Tasks;
     using AwesomeBank.Identity.Domain.Entities;
     using AwesomeBank.Identity.Domain.Interfaces;
-    using AwesomeBank.Identity.Infrastructure.Exceptions;
     using Microsoft.EntityFrameworkCore;
 
     public class RolesRepository : IRolesRepository
@@ -15,15 +14,9 @@
             _context = context;
         }
 
-        public async Task<Role> GetRoleAndEnsureExistsAsync(string name)
+        public async Task<Role> GetRoleAsync(string name)
         {
-            var role = await _context.Roles.FirstOrDefaultAsync(x => x.Name == name);
-            if (role == null)
-            {
-                throw new RoleNotFoundException(name);
-            }
-
-            return role;
+            return await _context.Roles.FirstOrDefaultAsync(x => x.Name == name);
         }
     }
 }
