@@ -1,4 +1,4 @@
-﻿namespace AwesomeBank.Api.Tests
+﻿namespace AwesomeBank.Api.Tests.Filters
 {
     using System.Collections.Generic;
     using System.Linq;

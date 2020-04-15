@@ -1,6 +1,9 @@
 ﻿namespace AwesomeBank.Identity.Application.Exceptions
 {
-    public class UserWithGivenEmailAlreadyExistsException : IdentityBaseApplicationException
+    using System.Net;
+    using AwesomeBank.BuildingBlocks.Domain;
+
+    public class UserWithGivenEmailAlreadyExistsException : ApplicationBaseException
     {
         public UserWithGivenEmailAlreadyExistsException(string email)
             : base($"User with email: '{email}' already exists in database.")
@@ -11,5 +14,7 @@
         public string Email { get; }
 
         public override string Code => "user_with_given_email_already_exists";
+
+        public override HttpStatusCode StatusCode => HttpStatusCode.BadRequest;
     }
 }

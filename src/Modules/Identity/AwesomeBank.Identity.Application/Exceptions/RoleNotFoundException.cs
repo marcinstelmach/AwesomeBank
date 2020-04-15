@@ -1,6 +1,9 @@
 ﻿namespace AwesomeBank.Identity.Application.Exceptions
 {
-    public class RoleNotFoundException : IdentityBaseApplicationException
+    using System.Net;
+    using AwesomeBank.BuildingBlocks.Domain;
+
+    public class RoleNotFoundException : ApplicationBaseException
     {
         public RoleNotFoundException(string roleName)
             : base($"User role with name: '{roleName}` not found.")
@@ -11,5 +14,7 @@
         public string RoleName { get; }
 
         public override string Code => "user_role_not_found";
+
+        public override HttpStatusCode StatusCode => HttpStatusCode.BadRequest;
     }
 }
