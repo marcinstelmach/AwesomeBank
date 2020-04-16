@@ -10,6 +10,7 @@
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new UserViewModelProfile());
+                cfg.AddProfile(new AuthenticationViewModelsProfile());
             });
 
             return configuration;

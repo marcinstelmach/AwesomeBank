@@ -7,7 +7,7 @@
     using AwesomeBank.Identity.Application.Commands;
     using Microsoft.AspNetCore.Mvc;
 
-    [Route("api/users")]
+    [Route("api/v1/users")]
     public class UsersController : ControllerBase
     {
         private readonly IMapper _mapper;
