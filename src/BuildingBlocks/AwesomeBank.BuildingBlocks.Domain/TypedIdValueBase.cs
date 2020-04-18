@@ -71,5 +71,10 @@
 
             return EqualityComparer<T>.Default.Equals(Value, other.Value);
         }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }

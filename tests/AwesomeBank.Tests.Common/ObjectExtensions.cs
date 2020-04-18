@@ -1,6 +1,6 @@
 ﻿namespace AwesomeBank.Tests.Common
 {
-    public static class Extensions
+    public static class ObjectExtensions
     {
         public static void SetPropertyValue(this object obj, string propertyName, object value)
         {

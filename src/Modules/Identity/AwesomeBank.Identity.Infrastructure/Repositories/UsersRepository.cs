@@ -1,6 +1,7 @@
-﻿namespace AwesomeBank.Identity.Infrastructure
+﻿namespace AwesomeBank.Identity.Infrastructure.Repositories
 {
     using System.Threading.Tasks;
+    using AwesomeBank.BuildingBlocks.Domain.Specifications;
     using AwesomeBank.BuildingBlocks.Infrastructure;
     using AwesomeBank.Identity.Domain.Entities;
     using AwesomeBank.Identity.Domain.Interfaces;
@@ -20,6 +21,11 @@
         {
             return await _identityContext.Users
                 .AnyAsync(x => x.Email == email.ToLowerInvariant());
+        }
+
+        public async Task<User> FindUserAsync(Specification<User> specification)
+        {
+            return await _identityContext.Users.FirstOrDefaultAsync(specification.ToExpression());
         }
 
         public void AddUser(User user)

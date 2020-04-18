@@ -2,8 +2,8 @@
 {
     using System;
     using AutoFixture.Xunit2;
+    using AwesomeBank.Identity.Domain.Factories;
     using AwesomeBank.Identity.Domain.Interfaces;
-    using AwesomeBank.Identity.Domain.Services;
     using FluentAssertions;
     using Moq;
     using Xunit;
