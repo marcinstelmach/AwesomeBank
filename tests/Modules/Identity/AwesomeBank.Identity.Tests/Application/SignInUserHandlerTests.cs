@@ -1,7 +1,6 @@
 ﻿namespace AwesomeBank.Identity.Tests.Application
 {
     using System;
-    using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
     using AutoFixture.Xunit2;
     using AwesomeBank.BuildingBlocks.Application;
@@ -14,7 +13,6 @@
     using AwesomeBank.Identity.Domain.Interfaces;
     using AwesomeBank.Identity.Domain.Models;
     using AwesomeBank.Identity.Domain.Specifications;
-    using AwesomeBank.Tests.Common;
     using FluentAssertions;
     using Moq;
     using Xunit;
