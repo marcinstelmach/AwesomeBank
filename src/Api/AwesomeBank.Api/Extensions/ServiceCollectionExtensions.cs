@@ -11,6 +11,7 @@
     public static class ServiceCollectionExtensions
     {
         private const string DatabaseSettingsSectionKey = "DatabaseSettings";
+        private const string JwtAuthenticationSettingsSectionKey = "JwtAuthenticationSettings";
 
         public static IServiceCollection AddMediator(this IServiceCollection services)
             => services.AddMediatR(IdentityApplicationAssembly.Assembly);
@@ -24,6 +25,7 @@
 
         public static IServiceCollection AddConfiguration(this IServiceCollection services, IConfiguration configuration)
             => services
-                .Configure<DatabaseSettings>(configuration.GetSection(DatabaseSettingsSectionKey));
+                .Configure<DatabaseSettings>(configuration.GetSection(DatabaseSettingsSectionKey))
+                .Configure<JwtAuthenticationSettings>(configuration.GetSection(JwtAuthenticationSettingsSectionKey));
     }
 }

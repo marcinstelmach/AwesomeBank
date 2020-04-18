@@ -8,6 +8,7 @@
         public static IServiceCollection AddBuildingBlocksServices(this IServiceCollection services)
             => services
                 .AddScoped<IBus, MediatrBus>()
-                .AddScoped<IMapper, Mapper>();
+                .AddScoped<IMapper, Mapper>()
+                .AddTransient<IDateTimeService, DateTimeService>();
     }
 }

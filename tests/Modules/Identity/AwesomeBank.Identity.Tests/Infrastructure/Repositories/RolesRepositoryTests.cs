@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using AutoFixture.Xunit2;
     using AwesomeBank.Identity.Infrastructure;
+    using AwesomeBank.Identity.Infrastructure.Repositories;
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
     using Xunit;

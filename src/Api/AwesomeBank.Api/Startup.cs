@@ -3,6 +3,7 @@
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using AwesomeBank.Api.Extensions;
+    using AwesomeBank.Api.Filters;
     using AwesomeBank.BuildingBlocks.Infrastructure.Extensions;
     using AwesomeBank.Identity.Infrastructure;
     using Microsoft.AspNetCore.Builder;
@@ -41,10 +42,9 @@
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
