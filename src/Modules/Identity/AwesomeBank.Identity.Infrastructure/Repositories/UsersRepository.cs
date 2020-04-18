@@ -1,4 +1,4 @@
-﻿namespace AwesomeBank.Identity.Infrastructure
+﻿namespace AwesomeBank.Identity.Infrastructure.Repositories
 {
     using System.Threading.Tasks;
     using AwesomeBank.BuildingBlocks.Domain.Specifications;

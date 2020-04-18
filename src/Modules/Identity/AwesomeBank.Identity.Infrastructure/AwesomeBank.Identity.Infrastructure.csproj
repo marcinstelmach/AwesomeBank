@@ -16,11 +16,16 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\AwesomeBank.BuildingBlocks.Infrastructure\AwesomeBank.BuildingBlocks.Infrastructure.csproj" />
     <ProjectReference Include="..\AwesomeBank.Identity.Application\AwesomeBank.Identity.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Settings\" />
   </ItemGroup>
 
 </Project>

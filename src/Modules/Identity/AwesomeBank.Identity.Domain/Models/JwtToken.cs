@@ -1,6 +1,6 @@
-﻿namespace AwesomeBank.Identity.Application.Dtos
+﻿namespace AwesomeBank.Identity.Domain.Models
 {
-    public class TokenDto
+    public class JwtToken
     {
         public string AccessToken { get; set; }
 

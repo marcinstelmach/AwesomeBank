@@ -1,7 +1,8 @@
-﻿namespace AwesomeBank.Identity.Domain.Services
+﻿namespace AwesomeBank.Identity.Infrastructure.Services
 {
     using System;
     using AwesomeBank.Identity.Domain.Interfaces;
+    using AwesomeBank.Identity.Domain.Services;
 
     public class PasswordComparer : IPasswordComparer
     {
