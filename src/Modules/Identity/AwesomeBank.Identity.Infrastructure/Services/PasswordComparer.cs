@@ -2,7 +2,6 @@
 {
     using System;
     using AwesomeBank.Identity.Domain.Interfaces;
-    using AwesomeBank.Identity.Domain.Services;
 
     public class PasswordComparer : IPasswordComparer
     {

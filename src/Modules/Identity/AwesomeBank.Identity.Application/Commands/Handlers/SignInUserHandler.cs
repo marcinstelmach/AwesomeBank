@@ -14,14 +14,14 @@
     {
         private readonly IUsersRepository _usersRepository;
         private readonly IPasswordComparer _passwordComparer;
-        private readonly ITokensManager _tokensManager;
+        private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IMapper _mapper;
 
-        public SignInUserHandler(IUsersRepository usersRepository, IPasswordComparer passwordComparer, ITokensManager tokensManager, IMapper mapper)
+        public SignInUserHandler(IUsersRepository usersRepository, IPasswordComparer passwordComparer, IJwtTokenGenerator jwtTokenGenerator, IMapper mapper)
         {
             _usersRepository = usersRepository;
             _passwordComparer = passwordComparer;
-            _tokensManager = tokensManager;
+            _jwtTokenGenerator = jwtTokenGenerator;
             _mapper = mapper;
         }
 
@@ -38,7 +38,7 @@
                 throw new InvalidUserEmailOrPasswordException();
             }
 
-            var jwtToken = await _tokensManager.CreateTokenAsync(user);
+            var jwtToken = await _jwtTokenGenerator.GenerateAsync(user);
             return _mapper.Map<JwtToken, TokenDto>(jwtToken);
         }
     }

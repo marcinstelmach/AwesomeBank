@@ -18,7 +18,7 @@
 
         public async Task<IEnumerable<Claim>> GetUserClaimsAsync(UserId userId)
         {
-            var claims = await _context.Users
+            return await _context.Users
                 .Include(x => x.ApplicationUserGroups)
                 .ThenInclude(x => x.ApplicationGroup)
                 .ThenInclude(x => x.ApplicationGroupClaims)
@@ -29,8 +29,6 @@
                 .SelectMany(x => x.ApplicationGroupClaims)
                 .Select(x => x.Claim)
                 .ToArrayAsync();
-
-            return claims;
         }
     }
 }

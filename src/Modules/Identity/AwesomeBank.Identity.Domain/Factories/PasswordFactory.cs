@@ -1,4 +1,4 @@
-﻿namespace AwesomeBank.Identity.Domain.Services
+﻿namespace AwesomeBank.Identity.Domain.Factories
 {
     using AwesomeBank.BuildingBlocks.Domain;
     using AwesomeBank.Identity.Domain.Interfaces;

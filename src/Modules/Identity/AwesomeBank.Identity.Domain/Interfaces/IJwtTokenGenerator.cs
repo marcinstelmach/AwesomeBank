@@ -4,8 +4,8 @@
     using AwesomeBank.Identity.Domain.Entities;
     using AwesomeBank.Identity.Domain.Models;
 
-    public interface ITokensManager
+    public interface IJwtTokenGenerator
     {
-        Task<JwtToken> CreateTokenAsync(User user);
+        Task<JwtToken> GenerateAsync(User user);
     }
 }

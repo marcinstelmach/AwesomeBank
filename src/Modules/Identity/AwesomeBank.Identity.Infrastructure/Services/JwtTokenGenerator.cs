@@ -18,7 +18,7 @@
     using Microsoft.IdentityModel.Tokens;
     using Claim = System.Security.Claims.Claim;
 
-    public class TokensManager : ITokensManager
+    public class JwtTokenGenerator : IJwtTokenGenerator
     {
         private const string UserRoleClaimName = "userRole";
 
@@ -26,14 +26,14 @@
         private readonly IDateTimeService _dateTimeService;
         private readonly JwtAuthenticationSettings _jwtAuthenticationSettings;
 
-        public TokensManager(IUserClaimsRepository userClaimsRepository, IDateTimeService dateTimeService, IOptions<JwtAuthenticationSettings> jwtAuthenticationSettings)
+        public JwtTokenGenerator(IUserClaimsRepository userClaimsRepository, IDateTimeService dateTimeService, IOptions<JwtAuthenticationSettings> jwtAuthenticationSettings)
         {
             _userClaimsRepository = userClaimsRepository;
             _dateTimeService = dateTimeService;
             _jwtAuthenticationSettings = jwtAuthenticationSettings.Value;
         }
 
-        public async Task<JwtToken> CreateTokenAsync(User user)
+        public async Task<JwtToken> GenerateAsync(User user)
         {
             Insist.IsNotNull(user, nameof(user));
 

@@ -24,8 +24,4 @@
     <ProjectReference Include="..\AwesomeBank.Identity.Application\AwesomeBank.Identity.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Settings\" />
-  </ItemGroup>
-
 </Project>

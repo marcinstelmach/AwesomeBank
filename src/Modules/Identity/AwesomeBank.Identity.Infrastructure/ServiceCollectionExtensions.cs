@@ -1,8 +1,8 @@
 ﻿namespace AwesomeBank.Identity.Infrastructure
 {
     using AwesomeBank.BuildingBlocks.Infrastructure.Settings;
+    using AwesomeBank.Identity.Domain.Factories;
     using AwesomeBank.Identity.Domain.Interfaces;
-    using AwesomeBank.Identity.Domain.Services;
     using AwesomeBank.Identity.Infrastructure.Repositories;
     using AwesomeBank.Identity.Infrastructure.Services;
     using Microsoft.EntityFrameworkCore;
@@ -26,7 +26,7 @@
             services.AddTransient<IPasswordEncrypter, PasswordEncrypter>();
             services.AddTransient<IPasswordFactory, PasswordFactory>();
             services.AddTransient<IPasswordComparer, PasswordComparer>();
-            services.AddTransient<ITokensManager, TokensManager>();
+            services.AddTransient<IJwtTokenGenerator, JwtTokenGenerator>();
 
             return services;
         }
