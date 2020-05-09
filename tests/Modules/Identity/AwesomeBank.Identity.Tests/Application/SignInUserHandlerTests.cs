@@ -1,6 +1,7 @@
 ﻿namespace AwesomeBank.Identity.Tests.Application
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
     using AutoFixture.Xunit2;
     using AwesomeBank.BuildingBlocks.Application;
@@ -13,6 +14,7 @@
     using AwesomeBank.Identity.Domain.Interfaces;
     using AwesomeBank.Identity.Domain.Models;
     using AwesomeBank.Identity.Domain.Specifications;
+    using AwesomeBank.Tests.Common;
     using FluentAssertions;
     using Moq;
     using Xunit;
@@ -56,13 +58,22 @@
 
         [Theory]
         [AutoData]
-        public async Task When_Handling_Then_Finds_User_In_Repository(SignInUserCommand command)
+        public async Task When_Handling_Then_Finds_User_In_Repository_With_Correct_Specification(SignInUserCommand command)
         {
+            // Arrange
+            var user = IdentityTestsHelper.CreateUser(command.Email);
+
             // Act
             await _sut.Handle(command, default);
 
             // Assert
-            _usersRepositoryMock.Verify(x => x.FindUserAsync(It.IsAny<UserForEmailAddressSpecification>()), Times.Once);
+            _usersRepositoryMock.Verify(
+                x => x.FindUserAsync(
+                    It.Is<Specification<User>>(y =>
+                        y.GetNestedSpecifications().Count() == 1 &&
+                        y.ContainsSpecification<User, UserForEmailAddressSpecification>() &&
+                        y.IsSatisfiedBy(user))),
+                Times.Once);
         }
 
         [Theory]
