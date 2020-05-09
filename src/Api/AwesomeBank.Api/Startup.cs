@@ -24,6 +24,8 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddConfiguration(Configuration);
+            services.AddJwtAuthentication();
+            services.AddPolicyBaseAuthorization();
             services.AddAutoMapper();
             services.AddMediator();
             services.AddBuildingBlocksServices();
@@ -44,6 +46,7 @@
 
             app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
