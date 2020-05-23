@@ -1,7 +1,9 @@
 ﻿namespace AwesomeBank.Api.Modules.Identity
 {
+    using System.Net;
     using System.Threading.Tasks;
     using AwesomeBank.Api.Filters;
+    using AwesomeBank.Api.Models;
     using AwesomeBank.Api.Modules.Identity.Models;
     using AwesomeBank.Api.Permissions;
     using AwesomeBank.BuildingBlocks.Application;
@@ -23,6 +25,8 @@
 
         [HttpPost]
         [ValidateModelFilter]
+        [ProducesResponseType((int)HttpStatusCode.Accepted)]
+        [ProducesResponseType(typeof(ErrorResponseViewModel), (int)HttpStatusCode.BadRequest)]
         [Authorize(AccountPermissions.Manage)]
         public async Task<IActionResult> CreateUserAsync([FromBody] CreateUserViewModel viewModel)
         {

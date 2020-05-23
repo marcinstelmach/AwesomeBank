@@ -2,6 +2,7 @@
 {
     using System;
     using System.Text;
+    using AwesomeBank.Api.Filters;
     using AwesomeBank.Api.Mappings;
     using AwesomeBank.Api.Permissions;
     using AwesomeBank.BuildingBlocks.Infrastructure.Settings;
@@ -12,6 +13,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
+    using Microsoft.OpenApi.Models;
 
     public static class ServiceCollectionExtensions
     {
@@ -74,6 +76,16 @@
             });
 
             return services;
+        }
+
+        public static IServiceCollection AddSwagger(this IServiceCollection services)
+        {
+            return services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v1", new OpenApiInfo { Title = "Awesome Bank", Version = "v1" });
+                x.OperationFilter<ForbiddenResponseOperationFilter>();
+                x.OperationFilter<AuthenticationResponsesOperationFilter>();
+            });
         }
     }
 }
