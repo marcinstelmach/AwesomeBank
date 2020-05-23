@@ -28,6 +28,7 @@
             services.AddPolicyBaseAuthorization();
             services.AddAutoMapper();
             services.AddMediator();
+            services.AddSwagger();
             services.AddBuildingBlocksServices();
             services.AddIdentityModule();
             services.AddControllers()
@@ -44,6 +45,7 @@
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwaggerUi();
             app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseRouting();
             app.UseAuthentication();

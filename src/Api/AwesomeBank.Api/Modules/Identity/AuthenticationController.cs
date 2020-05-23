@@ -1,11 +1,14 @@
 ﻿namespace AwesomeBank.Api.Modules.Identity
 {
+    using System.Net;
     using System.Threading.Tasks;
     using AwesomeBank.Api.Filters;
+    using AwesomeBank.Api.Models;
     using AwesomeBank.Api.Modules.Identity.Models;
     using AwesomeBank.BuildingBlocks.Application;
     using AwesomeBank.Identity.Application.Commands;
     using AwesomeBank.Identity.Application.Dtos;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     [Route("api/v1/authentication")]
@@ -22,6 +25,9 @@
 
         [HttpPost]
         [ValidateModelFilter]
+        [ProducesResponseType(typeof(TokenViewModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ErrorResponseViewModel), (int)HttpStatusCode.BadRequest)]
+        [AllowAnonymous]
         public async Task<IActionResult> SignInUserAsync([FromBody] SignInUserViewModel viewModel)
         {
             var signInUserCommand = _mapper.Map<SignInUserViewModel, SignInUserCommand>(viewModel);
