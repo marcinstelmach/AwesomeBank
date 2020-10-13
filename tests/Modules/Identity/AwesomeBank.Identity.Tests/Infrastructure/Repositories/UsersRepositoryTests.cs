@@ -3,6 +3,7 @@
     using System;
     using System.Threading.Tasks;
     using AutoFixture.Xunit2;
+    using AwesomeBank.Identity.Domain.Specifications;
     using AwesomeBank.Identity.Infrastructure;
     using AwesomeBank.Identity.Infrastructure.Repositories;
     using FluentAssertions;
@@ -24,9 +25,7 @@
         }
 
         [Theory]
-        [InlineData("test@email.com")]
-        [InlineData("TEST@email.com")]
-        [InlineData("TEST@Email.com")]
+        [AutoData]
         public async Task When_Checking_If_User_Exists_For_Existing_Email_Address_Then_Returns_True(string email)
         {
             // Arrange
@@ -36,7 +35,7 @@
             await _context.SaveChangesAsync();
 
             // Act
-            var result = await _sut.ExistsUserAsync(email);
+            var result = await _sut.ExistsUserAsync(new UserForEmailAddressSpecification(email));
 
             // Assert
             result.Should().BeTrue();
@@ -47,7 +46,7 @@
         public async Task When_Checking_If_User_Exists_For_Non_Existing_Email_Address_Then_Returns_False(string email)
         {
             // Act
-            var result = await _sut.ExistsUserAsync(email);
+            var result = await _sut.ExistsUserAsync(new UserForEmailAddressSpecification(email));
 
             // Assert
             result.Should().BeFalse();
