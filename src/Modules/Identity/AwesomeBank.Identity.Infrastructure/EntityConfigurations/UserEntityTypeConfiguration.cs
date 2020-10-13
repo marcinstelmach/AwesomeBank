@@ -33,12 +33,7 @@
             builder.OwnsOne(x => x.IdentityDocument)
                 .Property(x => x.Value).HasColumnName("DocumentValue");
 
-            builder.Property<int>("RoleId");
-            builder.HasOne(x => x.Role)
-                .WithMany()
-                .HasForeignKey("RoleId");
-
-            builder.HasMany(x => x.ApplicationUserGroups)
+            builder.HasMany(x => x.UserGroups)
                 .WithOne()
                 .HasForeignKey("UserId");
 

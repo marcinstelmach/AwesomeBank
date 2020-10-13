@@ -3,8 +3,8 @@
     using System.Threading.Tasks;
     using AwesomeBank.Identity.Domain.Entities;
 
-    public interface IRolesRepository
+    public interface IGroupsRepository
     {
-        Task<Role> GetRoleAsync(string name);
+        Task<Group> FindAsync(string normalizedName);
     }
 }
