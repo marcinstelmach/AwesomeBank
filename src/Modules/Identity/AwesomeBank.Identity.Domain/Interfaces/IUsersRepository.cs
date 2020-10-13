@@ -7,7 +7,7 @@
 
     public interface IUsersRepository : IRepository
     {
-        Task<bool> ExistsUserAsync(string email);
+        Task<bool> ExistsUserAsync(Specification<User> specification);
 
         Task<User> FindUserAsync(Specification<User> specification);
 

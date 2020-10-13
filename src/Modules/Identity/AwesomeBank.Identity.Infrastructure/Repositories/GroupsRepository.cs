@@ -5,18 +5,18 @@
     using AwesomeBank.Identity.Domain.Interfaces;
     using Microsoft.EntityFrameworkCore;
 
-    public class RolesRepository : IRolesRepository
+    public class GroupsRepository : IGroupsRepository
     {
         private readonly IdentityContext _context;
 
-        public RolesRepository(IdentityContext context)
+        public GroupsRepository(IdentityContext context)
         {
             _context = context;
         }
 
-        public async Task<Role> GetRoleAsync(string name)
+        public async Task<Group> FindAsync(string normalizedName)
         {
-            return await _context.Roles.FirstOrDefaultAsync(x => x.Name == name);
+            return await _context.Groups.FirstOrDefaultAsync(x => x.NormalizedName == normalizedName);
         }
     }
 }

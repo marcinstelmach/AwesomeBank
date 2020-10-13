@@ -6,6 +6,6 @@
 
     public interface IUserClaimsRepository
     {
-        Task<IEnumerable<Claim>> GetUserClaimsAsync(UserId userId);
+        Task<IEnumerable<string>> GetUserClaimsAsync(UserId userId);
     }
 }

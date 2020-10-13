@@ -16,16 +16,16 @@
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<Role> Roles { get; set; }
+        public DbSet<Group> Groups { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UserEntityTypeConfiguration(IdentitySchemaName));
-            modelBuilder.ApplyConfiguration(new RoleEntityTypeConfiguration(IdentitySchemaName));
-            modelBuilder.ApplyConfiguration(new ApplicationUserGroupEntityTypeConfiguration(IdentitySchemaName));
-            modelBuilder.ApplyConfiguration(new ApplicationGroupEntityTypeConfiguration(IdentitySchemaName));
-            modelBuilder.ApplyConfiguration(new ApplicationGroupClaimEntityTypeConfiguration(IdentitySchemaName));
-            modelBuilder.ApplyConfiguration(new ClaimsEntityTypeConfiguration(IdentitySchemaName));
+            base.OnModelCreating(modelBuilder);
+            modelBuilder
+                .ApplyConfiguration(new UserEntityTypeConfiguration(IdentitySchemaName))
+                .ApplyConfiguration(new UserGroupEntityTypeConfiguration(IdentitySchemaName))
+                .ApplyConfiguration(new GroupEntityTypeConfiguration(IdentitySchemaName))
+                .ApplyConfiguration(new GroupClaimEntityTypeConfiguration(IdentitySchemaName));
         }
     }
 }

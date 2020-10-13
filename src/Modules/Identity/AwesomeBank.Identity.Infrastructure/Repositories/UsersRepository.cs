@@ -17,10 +17,10 @@
             _identityContext = identityContext;
         }
 
-        public async Task<bool> ExistsUserAsync(string email)
+        public async Task<bool> ExistsUserAsync(Specification<User> specification)
         {
             return await _identityContext.Users
-                .AnyAsync(x => x.Email == email.ToLowerInvariant());
+                .AnyAsync(specification.ToExpression());
         }
 
         public async Task<User> FindUserAsync(Specification<User> specification)

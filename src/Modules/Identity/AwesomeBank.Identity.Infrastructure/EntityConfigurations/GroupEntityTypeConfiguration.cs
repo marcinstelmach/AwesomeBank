@@ -4,22 +4,22 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class ApplicationGroupEntityTypeConfiguration : IEntityTypeConfiguration<ApplicationGroup>
+    public class GroupEntityTypeConfiguration : IEntityTypeConfiguration<Group>
     {
-        private const string ApplicationGroupTableName = "ApplicationGroups";
+        private const string ApplicationGroupTableName = "Groups";
         private readonly string _schemaName;
 
-        public ApplicationGroupEntityTypeConfiguration(string schemaName)
+        public GroupEntityTypeConfiguration(string schemaName)
         {
             _schemaName = schemaName;
         }
 
-        public void Configure(EntityTypeBuilder<ApplicationGroup> builder)
+        public void Configure(EntityTypeBuilder<Group> builder)
         {
             builder.ToTable(ApplicationGroupTableName, _schemaName);
 
             builder.HasKey(x => x.Id);
-            builder.HasMany(x => x.ApplicationGroupClaims)
+            builder.HasMany(x => x.GroupClaims)
                 .WithOne();
         }
     }

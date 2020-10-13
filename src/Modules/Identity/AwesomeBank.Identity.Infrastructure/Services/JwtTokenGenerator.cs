@@ -20,7 +20,7 @@
 
     public class JwtTokenGenerator : IJwtTokenGenerator
     {
-        private const string UserRoleClaimName = "userRole";
+        private const string PermissionClaimType = "permission";
 
         private readonly IUserClaimsRepository _userClaimsRepository;
         private readonly IDateTimeService _dateTimeService;
@@ -43,11 +43,10 @@
                 new Claim(JwtRegisteredClaimNames.Iat, GetJwtDate(utcNow), ClaimValueTypes.Integer64),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-                new Claim(UserRoleClaimName, user.Role.Name),
             };
 
             var userClaims = await _userClaimsRepository.GetUserClaimsAsync(user.Id);
-            claims.AddRange(userClaims.Select(x => new Claim(x.ClaimType, x.ClaimValue)));
+            claims.AddRange(userClaims.Select(x => new Claim(PermissionClaimType, x)));
 
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtAuthenticationSettings.SecretKey)), SecurityAlgorithms.HmacSha256);

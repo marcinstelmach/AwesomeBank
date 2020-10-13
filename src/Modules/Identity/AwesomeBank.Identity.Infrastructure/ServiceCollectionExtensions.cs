@@ -21,7 +21,7 @@
                     .UseSqlServer(databaseSettings.AwesomeBankConnectionString));
 
             services.AddScoped<IUsersRepository, UsersRepository>();
-            services.AddScoped<IRolesRepository, RolesRepository>();
+            services.AddScoped<IGroupsRepository, GroupsRepository>();
             services.AddScoped<IUserClaimsRepository, UserClaimsRepository>();
             services.AddTransient<IPasswordEncrypter, PasswordEncrypter>();
             services.AddTransient<IPasswordFactory, PasswordFactory>();

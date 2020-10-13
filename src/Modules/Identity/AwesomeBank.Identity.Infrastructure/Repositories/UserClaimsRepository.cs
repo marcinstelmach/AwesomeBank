@@ -16,18 +16,14 @@
             _context = context;
         }
 
-        public async Task<IEnumerable<Claim>> GetUserClaimsAsync(UserId userId)
+        public async Task<IEnumerable<string>> GetUserClaimsAsync(UserId userId)
         {
             return await _context.Users
-                .Include(x => x.ApplicationUserGroups)
-                .ThenInclude(x => x.ApplicationGroup)
-                .ThenInclude(x => x.ApplicationGroupClaims)
-                .ThenInclude(x => x.Claim)
                 .Where(x => x.Id == userId)
-                .SelectMany(x => x.ApplicationUserGroups)
-                .Select(x => x.ApplicationGroup)
-                .SelectMany(x => x.ApplicationGroupClaims)
-                .Select(x => x.Claim)
+                .SelectMany(x => x.UserGroups)
+                .Select(x => x.Group)
+                .SelectMany(x => x.GroupClaims)
+                .Select(x => x.ClaimValue)
                 .ToArrayAsync();
         }
     }

@@ -8,9 +8,9 @@
 
     public class User : Entity, IAggregateRoot
     {
-        private readonly List<ApplicationUserGroup> _applicationUserGroups;
+        private readonly List<UserGroup> _userGroups;
 
-        public User(string firstName, string lastName, string email, Password password, DateTime birthDayDate, IdentityDocument identityDocument, Role role)
+        public User(string firstName, string lastName, string email, Password password, DateTime birthDayDate, IdentityDocument identityDocument)
             : this()
         {
             Id = new UserId(Guid.NewGuid());
@@ -23,12 +23,11 @@
             IdentityDocument = identityDocument;
             CreationDateTime = DateTimeOffset.UtcNow;
             IsDeleted = false;
-            SetRole(role);
         }
 
         protected User()
         {
-            _applicationUserGroups = new List<ApplicationUserGroup>();
+            _userGroups = new List<UserGroup>();
         }
 
         public UserId Id { get; private set; }
@@ -51,9 +50,7 @@
 
         public bool IsDeleted { get; private set; }
 
-        public virtual Role Role { get; private set; }
-
-        public virtual IReadOnlyCollection<ApplicationUserGroup> ApplicationUserGroups => _applicationUserGroups;
+        public virtual IReadOnlyCollection<UserGroup> UserGroups => _userGroups;
 
         public void SetBirthDayDate(DateTime birthDayDate)
         {
@@ -65,9 +62,10 @@
             BirthDayDate = birthDayDate;
         }
 
-        public void SetRole(Role role)
+        public void AssignToGroup(Group group)
         {
-            Role = role;
+            Insist.IsNotNull(group, nameof(group));
+            _userGroups.Add(new UserGroup(Id, group.Id));
         }
     }
 }
